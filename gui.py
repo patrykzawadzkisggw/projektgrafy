@@ -1,4 +1,3 @@
-
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import simpledialog
@@ -47,18 +46,17 @@ class GraphEditor:
         self.root = tk.Tk()
         self.canvas = tk.Canvas(self.root, width=800, height=600)
         self.canvas.pack()
-        self.canvas.pack(fill=tk.BOTH, expand=True)  # Set canvas to fill the window
+        self.canvas.pack(fill=tk.BOTH, expand=True)
         self.canvas.bind("<Button-1>", self.add_vertex)
         self.canvas.bind("<Button-3>", self.remove_vertex)
-        self.canvas.bind("<B1-Motion>", self.drag_vertex)  # Added binding for dragging vertex
-        self.root.bind("<F5>", self.check_vertices)  # Added binding for F5
-        self.root.bind("<Control-n>", self.clear_canvas)  # Added binding for Ctrl+N
-        self.root.bind("<Control-s>", self.save_vertices)  # Added binding for Ctrl+S
-        self.root.bind("<Control-o>", self.load_vertices)  # Added binding for Ctrl+O
+        self.canvas.bind("<B1-Motion>", self.drag_vertex)
+        self.root.bind("<F5>", self.check_vertices)
+        self.root.bind("<Control-n>", self.clear_canvas)
+        self.root.bind("<Control-s>", self.save_vertices)
+        self.root.bind("<Control-o>", self.load_vertices)
         
         self.root.mainloop()
 
-    # Rest of the code...
 class GraphEditor:
     def __init__(self):
         self.vertices = []
@@ -71,11 +69,11 @@ class GraphEditor:
         self.canvas.pack(fill=tk.BOTH, expand=True)  # Set canvas to fill the window
         self.canvas.bind("<Button-1>", self.add_vertex)
         self.canvas.bind("<Button-3>", self.remove_vertex)
-        self.canvas.bind("<B1-Motion>", self.drag_vertex)  # Added binding for dragging vertex
-        self.root.bind("<F5>", self.check_vertices)  # Added binding for F5
-        self.root.bind("<Control-n>", self.clear_canvas)  # Added binding for Ctrl+N
-        self.root.bind("<Control-s>", self.save_vertices)  # Added binding for Ctrl+S
-        self.root.bind("<Control-o>", self.load_vertices)  # Added binding for Ctrl+O
+        self.canvas.bind("<B1-Motion>", self.drag_vertex)
+        self.root.bind("<F5>", self.check_vertices)
+        self.root.bind("<Control-n>", self.clear_canvas)
+        self.root.bind("<Control-s>", self.save_vertices)
+        self.root.bind("<Control-o>", self.load_vertices)
         
         self.root.mainloop()
     

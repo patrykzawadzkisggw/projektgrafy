@@ -135,5 +135,3 @@ def algorytm2(graph, start_node, end_node):
     else:
         shortest_path, total_distance = dijkstra(graph, start_node, end_node)
         return [msg2(start_node, end_node, shortest_path, total_distance),shortest_path]
-
-#algorytm(graph, start_node, end_node)
