@@ -1,3 +1,6 @@
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from bellman_ford import bellman_ford
 
 # Test Case 1: Shortest path exists

@@ -1,3 +1,6 @@
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from has_negative_weight import has_negative_weight
 # Test Case 6: Graph with positive weights only
 graph6 = {

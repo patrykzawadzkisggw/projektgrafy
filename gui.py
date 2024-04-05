@@ -8,6 +8,7 @@ from algorytm import algorytm2,transform_object
 import json
 
 
+
 class GraphEditor:
     """
     A class representing a graph editor.
@@ -31,7 +32,6 @@ class GraphEditor:
         load_vertices(event): Loads the vertices from a file.
         check_vertices(event): Checks the validity of the vertices in the graph.
     """
-
     def __init__(self):
         """
         Initializes the GraphEditor class.
@@ -39,26 +39,6 @@ class GraphEditor:
         Creates the root window and canvas widget for drawing the graph.
         Binds various events to the canvas and root window.
         """
-        self.vertices = []
-        self.edges = []
-        self.path = []
-
-        self.root = tk.Tk()
-        self.canvas = tk.Canvas(self.root, width=800, height=600)
-        self.canvas.pack()
-        self.canvas.pack(fill=tk.BOTH, expand=True)
-        self.canvas.bind("<Button-1>", self.add_vertex)
-        self.canvas.bind("<Button-3>", self.remove_vertex)
-        self.canvas.bind("<B1-Motion>", self.drag_vertex)
-        self.root.bind("<F5>", self.check_vertices)
-        self.root.bind("<Control-n>", self.clear_canvas)
-        self.root.bind("<Control-s>", self.save_vertices)
-        self.root.bind("<Control-o>", self.load_vertices)
-        
-        self.root.mainloop()
-
-class GraphEditor:
-    def __init__(self):
         self.vertices = []
         self.edges = []
         self.path = []
