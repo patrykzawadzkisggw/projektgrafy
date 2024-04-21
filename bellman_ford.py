@@ -23,8 +23,13 @@ def bellman_ford(graph, start, end):
 
     for node in graph:
         for neighbor, weight in graph[node]:
-            if distances[node] + weight < distances[neighbor]:
-                return None  # Ujemny cykl istnieje
+            if distances[node] + weight < distances[neighbor]: # Ujemny cykl istnieje
+                ncycle = [node]
+                node = previous[node]
+                while node != ncycle[0]:
+                    ncycle.append(node)
+                    node = previous[node]
+                return ncycle,float('-inf')  
 
     path = []
     current_node = end
