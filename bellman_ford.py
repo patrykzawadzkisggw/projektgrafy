@@ -1,12 +1,4 @@
 def bellman_ford(graph, start, end):
-    """
-    Implementuje algorytm Bellmana-Forda do znajdywania najkrótszej drogi między dwoma wierzchołkami w grafie.
-
-    :param graph: Graf w postaci listy sąsiedztwa z wagami krawędzi.
-    :param start: Punkt początkowy.
-    :param end: Punkt końcowy.
-    :return: Krotka zawierająca najkrótszą drogę i jej długość, lub None jeśli istnieje ujemny cykl.
-    """
     if len(graph) == 0:
         return None
     distances = {node: float('inf') for node in graph}

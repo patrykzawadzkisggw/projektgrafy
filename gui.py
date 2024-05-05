@@ -4,48 +4,17 @@ from tkinter import simpledialog
 from tkinter import filedialog
 import keyboard
 import re
-from algorytm import algorytm2,transform_object
+from algorytm import msg_window,transform_object
 import json
 
-
-
 class GraphEditor:
-    """
-    A class representing a graph editor.
-
-    Attributes:
-        vertices (list): A list of vertices in the graph.
-        edges (list): A list of edges in the graph.
-        path (list): A list representing the path in the graph.
-        root (tkinter.Tk): The root window of the graph editor.
-        canvas (tkinter.Canvas): The canvas widget for drawing the graph.
-
-    Methods:
-        __init__(): Initializes the GraphEditor class.
-        add_vertex(event): Adds a vertex to the graph.
-        remove_vertex(event): Removes a vertex from the graph.
-        drag_vertex(event): Drags a vertex in the graph.
-        draw_graph(): Draws the graph on the canvas.
-        distance(x1, y1, x2, y2): Calculates the distance between two points.
-        clear_canvas(event): Clears the canvas.
-        save_vertices(event): Saves the vertices to a file.
-        load_vertices(event): Loads the vertices from a file.
-        check_vertices(event): Checks the validity of the vertices in the graph.
-    """
     def __init__(self):
-        """
-        Initializes the GraphEditor class.
-
-        Creates the root window and canvas widget for drawing the graph.
-        Binds various events to the canvas and root window.
-        """
         self.vertices = []
         self.edges = []
         self.path = []
 
         self.root = tk.Tk()
         self.canvas = tk.Canvas(self.root, width=800, height=600)
-        self.canvas.pack()
         self.canvas.pack(fill=tk.BOTH, expand=True)  # Set canvas to fill the window
         self.canvas.bind("<Button-1>", self.add_vertex)
         self.canvas.bind("<Button-3>", self.remove_vertex)
@@ -199,7 +168,6 @@ class GraphEditor:
         
         existing_vertices = wierzcholki
         
-        
         missing_vertices = [vertex for vertex in laczenia if vertex not in existing_vertices]
         
         if missing_vertices:
@@ -214,11 +182,9 @@ class GraphEditor:
             elif end_vertex not in existing_vertices:
                 messagebox.showinfo("Błąd", f"Wierzchołek końcowy '{end_vertex}' nie istnieje na planszy.", parent=self.root)
             else:
-                msg,self.path=algorytm2(transform_object(self.vertices), start_vertex, end_vertex)
+                msg,self.path=msg_window(transform_object(self.vertices), start_vertex, end_vertex)
                 messagebox.showinfo("Wynik", msg, parent=self.root)
                 self.draw_graph()
-
-
 
 if __name__ == "__main__":
     editor = GraphEditor()
