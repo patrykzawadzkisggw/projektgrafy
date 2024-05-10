@@ -139,7 +139,7 @@ class GraphEditor:
         return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
     
     def clear_canvas(self, event):
-        confirm = messagebox.askquestion("Potwierdzenie", "Czy na pewno chcesz wyczyścić płutno?", parent=self.root)
+        confirm = messagebox.askquestion("Potwierdzenie", "Czy na pewno chcesz wyczyścić płótno?", parent=self.root)
         if confirm == "yes":
             self.vertices = []
             self.draw_graph()
