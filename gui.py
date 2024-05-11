@@ -14,7 +14,7 @@ class GraphEditor:
         self.path = []
 
         self.root = tk.Tk()
-        self.canvas = tk.Canvas(self.root, width=800, height=600)
+        self.canvas = tk.Canvas(self.root, width=800, height=600, bg='white')
         self.canvas.pack(fill=tk.BOTH, expand=True)  # Set canvas to fill the window
         self.canvas.bind("<Button-1>", self.add_vertex)
         self.canvas.bind("<Button-3>", self.remove_vertex)
