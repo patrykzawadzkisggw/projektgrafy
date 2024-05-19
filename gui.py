@@ -183,8 +183,8 @@ class GraphEditor:
                 messagebox.showinfo("Błąd", f"Wierzchołek końcowy '{end_vertex}' nie istnieje na planszy.", parent=self.root)
             else:
                 msg,self.path=msg_window(transform_object(self.vertices), start_vertex, end_vertex)
-                messagebox.showinfo("Wynik", msg, parent=self.root)
                 self.draw_graph()
+                messagebox.showinfo("Wynik", msg, parent=self.root)
 
 if __name__ == "__main__":
     editor = GraphEditor()
