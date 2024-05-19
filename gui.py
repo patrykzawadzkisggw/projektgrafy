@@ -14,8 +14,10 @@ class GraphEditor:
         self.path = []
 
         self.root = tk.Tk()
-        self.canvas = tk.Canvas(self.root, width=800, height=600)
+        self.canvas = tk.Canvas(self.root, width=800, height=600, bg='white')
         self.canvas.pack(fill=tk.BOTH, expand=True)  # Set canvas to fill the window
+
+        # Key bindings
         self.canvas.bind("<Button-1>", self.add_vertex)
         self.canvas.bind("<Button-3>", self.remove_vertex)
         self.canvas.bind("<B1-Motion>", self.drag_vertex)
@@ -139,7 +141,7 @@ class GraphEditor:
         return ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
     
     def clear_canvas(self, event):
-        confirm = messagebox.askquestion("Potwierdzenie", "Czy na pewno chcesz wyczyścić płutno?", parent=self.root)
+        confirm = messagebox.askquestion("Potwierdzenie", "Czy na pewno chcesz wyczyścić płótno?", parent=self.root)
         if confirm == "yes":
             self.vertices = []
             self.draw_graph()

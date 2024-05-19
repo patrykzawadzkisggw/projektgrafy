@@ -15,7 +15,7 @@ def bellman_ford(graph, start, end):
 
     for node in graph:
         for neighbor, weight in graph[node]:
-            if distances[node] + weight < distances[neighbor]: # Ujemny cykl istnieje
+            if distances[node] + weight < distances[neighbor]: # A negative cycle exists
                 ncycle = [node]
                 node = previous[node]
                 while node != ncycle[0]:
