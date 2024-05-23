@@ -1,6 +1,7 @@
 def bellman_ford(graph, start, end):
     if len(graph) == 0:
         return None
+
     distances = {node: float('inf') for node in graph}
     distances[start] = 0
     previous = {node: None for node in graph}
