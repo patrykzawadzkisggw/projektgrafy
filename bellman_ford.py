@@ -6,12 +6,16 @@ def bellman_ford(graph, start, end):
     previous = {node: None for node in graph}
 
     for _ in range(len(graph) - 1):
+        changed = False
         for node in graph:
             for neighbor, weight in graph[node]:
                 distance = distances[node] + weight
                 if distance < distances[neighbor]:
                     distances[neighbor] = distance
                     previous[neighbor] = node
+                    changed = True
+        if not changed:
+            break
 
     for node in graph:
         for neighbor, weight in graph[node]:
