@@ -4,7 +4,6 @@ from tkinter import simpledialog
 from tkinter import filedialog
 import keyboard
 import re
-from algorytm import msg_window,transform_object
 import json
 
 class GraphEditor:
@@ -187,6 +186,66 @@ class GraphEditor:
                 msg,self.path=msg_window(transform_object(self.vertices), start_vertex, end_vertex)
                 self.draw_graph()
                 messagebox.showinfo("Wynik", msg, parent=self.root)
+def transform_object(obj):
+    graph = {}
+    for node in obj:
+        name = node['name']
+        neighbors = [(neighbor, weight) for neighbor, weight in node['neighbors'].items()]
+        graph[name] = neighbors
+    return graph
+
+def msg_window(graph, start_node, end_node):
+    if len(graph) == 0:
+        return ["Graf jest pusty",[]]
+    shortest_path = bellman_ford(graph, start_node, end_node)
+    if shortest_path[1] == float('-inf'):
+        tekst = f"Ujemny cykl istnieje {shortest_path[0]}"
+        shortest_path[0].append(shortest_path[0][0])
+        return [tekst, shortest_path[0][::-1]]
+    if shortest_path[1] == float('inf'):
+        return [f"Nie ma połączenia między {start_node} i {end_node}", []]
+    else:
+        total_distance = shortest_path[1]
+        return [f"Najkrótsza droga z {start_node} do {end_node}: {shortest_path[0]}" + "\n" + f"Całkowita odległość: {total_distance}",shortest_path[0]]
+
+def bellman_ford(graph, start, end):
+    if len(graph) == 0:
+        return None
+
+    distances = {node: float('inf') for node in graph}
+    distances[start] = 0
+    previous = {node: None for node in graph}
+
+    for _ in range(len(graph) - 1):
+        changed = False
+        for node in graph:
+            for neighbor, weight in graph[node]:
+                distance = distances[node] + weight
+                if distance < distances[neighbor]:
+                    distances[neighbor] = distance
+                    previous[neighbor] = node
+                    changed = True
+        if not changed:
+            break
+
+    for node in graph:
+        for neighbor, weight in graph[node]:
+            if distances[node] + weight < distances[neighbor]: # A negative cycle exists
+                ncycle = [node]
+                node = previous[node]
+                while node != ncycle[0]:
+                    ncycle.append(node)
+                    node = previous[node]
+                return ncycle,float('-inf')  
+
+    path = []
+    current_node = end
+
+    while current_node is not None:
+        path.insert(0, current_node)
+        current_node = previous[current_node]
+
+    return path, distances[end]
 
 if __name__ == "__main__":
     editor = GraphEditor()
